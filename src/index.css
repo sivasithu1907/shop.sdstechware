@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-navy: #10283D;
+    --color-primary-blue: #275B86;
+    --color-light-accent: #489DCA;
+    --color-page-bg: #F7FAFD;
+    --color-card-bg: #FFFFFF;
+    --color-soft-border: #DCE7EF;
+    --color-main-text: #183B57;
+    --color-secondary-text: #62798C;
+  }
+
+  body {
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+}
+
+/* Custom scrollbar styling for compact lists and tables */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Printing: only the quotation sheet or an element marked .print-area is printed. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-quotation-sheet, #printable-quotation-sheet *,
+  .print-area, .print-area * {
+    visibility: visible;
+  }
+  #printable-quotation-sheet, .print-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+
+
+/* Small entrance animations referenced by existing components (previously undefined). */
+@keyframes sds-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sds-slide-in-right { from { transform: translateX(24px); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes sds-scale-in { from { transform: scale(0.97); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes sds-slide-up { from { transform: translate(-50%, 12px); opacity: 0; } to { transform: translate(-50%, 0); opacity: 1; } }
+.animate-fadeIn { animation: sds-fade-in 0.18s ease-out; }
+.animate-slideInRight { animation: sds-slide-in-right 0.2s ease-out; }
+.animate-scaleIn { animation: sds-scale-in 0.18s ease-out; }
+.animate-slideUp { animation: sds-slide-up 0.2s ease-out; }
+@media (prefers-reduced-motion: reduce) {
+  .animate-fadeIn, .animate-slideInRight, .animate-scaleIn, .animate-slideUp { animation: none; }
+}
